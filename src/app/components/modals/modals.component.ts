@@ -1,5 +1,4 @@
-import { Component, Input, Output } from '@angular/core';
-import { EventEmitter } from 'stream';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-modals',
@@ -8,6 +7,14 @@ import { EventEmitter } from 'stream';
   styleUrl: './modals.component.css',
 })
 export class ModalsComponent {
+  // รับค่าเป็น type string จาก parent component
   @Input() message?: string;
-  // @Output() close? = new EventEmitter<v>()
+
+  // emit กลับ parent component
+  @Output() close = new EventEmitter<void>();
+
+  onClose() {
+    // emit event
+    this.close.emit();
+  }
 }

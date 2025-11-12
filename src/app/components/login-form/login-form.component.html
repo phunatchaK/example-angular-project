@@ -1,6 +1,23 @@
-<form [formGroup]="login" (ngSubmit)="onLogin()">
+<form [formGroup]="login" (ngSubmit)="onLogin()" class="login-form">
+  <img src="assets/xten-logo.png" alt="xten-logo" width="240" />
   <input type="text" formControlName="username" />
+  <p
+    class="err"
+    *ngIf="login.get('username')?.touched && login.get('username')?.invalid"
+  >
+    Please กรอก username
+  </p>
   <input type="password" name="" id="" formControlName="password" />
+  <p
+    class="err"
+    *ngIf="login.get('password')?.touched && login.get('password')?.invalid"
+  >
+    Please กรอก password
+  </p>
   <button type="submit">Login</button>
 </form>
-<app-modals [message]="message" ></app-modals>
+<app-modals
+  *ngIf="message"
+  [message]="message"
+  (close)="onClose()"
+></app-modals>

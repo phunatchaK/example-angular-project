@@ -1,5 +1,8 @@
-<div class="modal">
-  <p>
-    {{ message }}
-  </p>
+<div class="modal" (click)="onClose()">
+  <div class="modal-content">
+    <p>
+      {{ message }}
+    </p>
+    <button>ปิด</button>
+  </div>
 </div>
